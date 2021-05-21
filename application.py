@@ -2,7 +2,7 @@
 from flask import Flask
 
 # print a nice greeting.
-def say_hello(username = "World"):
+def say_hello(username = "World !"):
     return '<p>Hello %s!</p>\n' % username
 
 # EB looks for an 'application' callable by default.
