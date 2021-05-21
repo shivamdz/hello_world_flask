@@ -1,17 +1,16 @@
 from flask import Flask
-import os
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return 'Hello World'
+def say_hello(username = "World"):
+    return '<p>Hello %s!</p>\n' % username
 
-@app.route('/hello')
-def hello():
-    return 'Hello Hello'
+application.add_url_rule('/', 'index', say_hello())
 
-if __name__ == '__main__':
-	app.debug = True
-	app.run()
-		
+application.add_url_rule('/<username>', 'hello', (lambda username:
+   say_hello(username)))
+
+# run the app.
+if __name__ == "__main__":
+    application.debug = True
+    application.run()
